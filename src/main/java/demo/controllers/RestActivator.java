@@ -31,6 +31,9 @@ public class RestActivator extends Application {
 		// CORS
 		resources.add(RestCorsProvider.class);
 
+		// Others
+		resources.add(DelayContainerRequestFilter.class);
+
 		// Activate RESTful resources
 		resources.add(AccountController.class);
 		resources.add(AuthController.class);
