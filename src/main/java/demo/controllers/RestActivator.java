@@ -28,6 +28,9 @@ public class RestActivator extends Application {
 		resources.add(RestExceptionMapper.class);
 		resources.add(ValidationExceptionMapper.class);
 
+		// CORS
+		resources.add(RestCorsProvider.class);
+
 		// Activate RESTful resources
 		resources.add(AccountController.class);
 		resources.add(AuthController.class);
