@@ -1,5 +1,6 @@
 package demo.controllers;
 
+import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.security.PrivateKey;
 import java.util.concurrent.TimeUnit;
@@ -74,7 +75,7 @@ public class AuthController {
 	}
 
 	private PrivateKey loadPrivateKey() {
-		try (InputStreamReader reader = new InputStreamReader(getClass().getClassLoader().getResourceAsStream("META-INF/jwt_prikey.pem"))) {
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("META-INF/jwt_prikey.pem")))) {
 
 			return KeyFactoryUtil.RSA.toPrivateKey(IOUtils.toString(reader));
 
