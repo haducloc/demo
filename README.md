@@ -6,4 +6,4 @@
  - Role-Based-Authorization
  - JPA, Transactional
  - RESTful exception handling
- - Wildfly, MySQL, Maven, etc.
+ - Wildfly, H2 Database, Maven, etc.
