@@ -22,7 +22,7 @@ public class DelayContainerRequestFilter implements ContainerRequestFilter {
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 
 		String __delaySec = requestContext.getUriInfo().getQueryParameters().getFirst("__delaySec");
-		int delaySec = ParseUtils.parseInt(__delaySec, 0);
+		int delaySec = ParseUtils.parseInt(__delaySec, 3);
 
 		if (delaySec > 0) {
 			ThreadUtils.sleepInMs(delaySec, TimeUnit.SECONDS);
