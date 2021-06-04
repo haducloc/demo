@@ -12,6 +12,7 @@ import demo.jaxrs.DefaultExceptionMapper;
 import demo.jaxrs.DelayContainerRequestFilter;
 import demo.jaxrs.JaxRsExceptionMapper;
 import demo.jaxrs.RestCorsProvider;
+import demo.jaxrs.TestErrorContainerRequestFilter;
 import demo.jaxrs.ValidationExceptionMapper;
 
 /**
@@ -40,6 +41,7 @@ public class RestActivator extends Application {
 
 		// Others
 		resources.add(DelayContainerRequestFilter.class);
+		resources.add(TestErrorContainerRequestFilter.class);
 
 		// Activate RESTful resources
 		resources.add(AccountController.class);
