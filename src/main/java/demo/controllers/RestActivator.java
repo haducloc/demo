@@ -25,7 +25,7 @@ public class RestActivator extends Application {
 		Set<Class<?>> resources = new HashSet<>();
 
 		// Activate ExceptionMappers
-		resources.add(RestExceptionMapper.class);
+		resources.add(DefaultExceptionMapper.class);
 		resources.add(ValidationExceptionMapper.class);
 
 		// CORS
