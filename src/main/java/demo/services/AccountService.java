@@ -7,8 +7,11 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+import com.appslandia.common.jdbc.LikeType;
+import com.appslandia.common.jdbc.SqlLikeEscaper;
 import com.appslandia.common.utils.AssertUtils;
 import com.appslandia.common.utils.ModelUtils;
 
@@ -37,8 +40,10 @@ public class AccountService {
 		}
 	}
 
-	public List<Account> getAll() throws Exception {
-		return em.createNamedQuery("Account.getAll", Account.class).getResultList();
+	public List<Account> queryUser(String name) throws Exception {
+		TypedQuery<Account> q = em.createNamedQuery("Account.queryUser", Account.class);
+		q.setParameter("name", (name != null) ? SqlLikeEscaper.toLikePattern(name, LikeType.CONTAINS) : null);
+		return q.getResultList();
 	}
 
 	// CMT: Container Managed Transaction

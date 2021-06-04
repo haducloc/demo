@@ -21,7 +21,7 @@ import com.appslandia.common.validators.MinLength;
 @Entity
 @Table(name = "AccountTbl")
 @NamedQuery(name = "Account.findByUsername", query = "SELECT e FROM Account e WHERE e.username=:username")
-@NamedQuery(name = "Account.getAll", query = "SELECT e FROM Account e")
+@NamedQuery(name = "Account.queryUser", query = "SELECT e FROM Account e WHERE ((:name IS NULL) OR (e.name LIKE :name)) ORDER BY e.name")
 public class Account extends EntityBase {
 	private static final long serialVersionUID = 1L;
 

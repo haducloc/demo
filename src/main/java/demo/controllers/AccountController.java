@@ -14,6 +14,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import demo.entities.Account;
@@ -44,10 +45,10 @@ public class AccountController {
 	}
 
 	@GET
-	@Path("/getAll")
+	@Path("/queryUser")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Account> getAll() throws Exception {
-		return accountService.getAll();
+	public List<Account> queryUser(@QueryParam("name") String name) throws Exception {
+		return accountService.queryUser(name);
 	}
 
 	@DELETE
