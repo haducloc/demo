@@ -17,6 +17,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.appslandia.common.utils.StringUtils;
+
 import demo.entities.Account;
 import demo.models.Result;
 import demo.services.AccountService;
@@ -48,6 +50,7 @@ public class AccountController {
 	@Path("/queryUser")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Account> queryUser(@QueryParam("name") String name) throws Exception {
+		name = StringUtils.trimToNull(name);
 		return accountService.queryUser(name);
 	}
 
