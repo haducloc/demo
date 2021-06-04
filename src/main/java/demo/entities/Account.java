@@ -9,8 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+
+import com.appslandia.common.validators.MinLength;
 
 /**
  *
@@ -19,7 +20,7 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "AccountTbl")
-@NamedQuery(name = "Account.findByEmail", query = "SELECT e FROM Account e WHERE e.email=:email")
+@NamedQuery(name = "Account.findByUsername", query = "SELECT e FROM Account e WHERE e.username=:username")
 @NamedQuery(name = "Account.getAll", query = "SELECT e FROM Account e")
 public class Account extends EntityBase {
 	private static final long serialVersionUID = 1L;
@@ -28,12 +29,15 @@ public class Account extends EntityBase {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer accountId;
 
+	// Demo purpose
 	@NotNull
-	@Email
+	@MinLength(5)
 	@Column(length = 255, unique = true, updatable = false)
-	private String email;
+	private String username;
 
+	// Demo purpose
 	@NotNull
+	@MinLength(5)
 	@Column(length = 255)
 	private String password;
 
@@ -57,12 +61,12 @@ public class Account extends EntityBase {
 		this.accountId = accountId;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {

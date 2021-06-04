@@ -47,9 +47,9 @@ public class AuthController {
 	@GET
 	@Path("/login")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Result login(@NotNull @QueryParam("email") String email, @NotNull @QueryParam("password") String password) throws Exception {
+	public Result login(@NotNull @QueryParam("username") String username, @NotNull @QueryParam("password") String password) throws Exception {
 
-		Account user = this.accountService.findByEmail(email);
+		Account user = this.accountService.findByUsername(username);
 
 		// NOTES: Demo uses clear passwords
 		if (user == null || !user.getPassword().equals(password)) {
@@ -57,7 +57,7 @@ public class AuthController {
 		}
 
 		// JWT
-		String jwt = generateJwt(user.getEmail(), SplitUtils.split(user.getRoles(), ','), 45, TimeUnit.MINUTES);
+		String jwt = generateJwt(user.getUsername(), SplitUtils.split(user.getRoles(), ','), 45, TimeUnit.MINUTES);
 
 		return new Result().data(jwt).message("Login succeeded.");
 	}

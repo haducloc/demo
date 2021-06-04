@@ -29,9 +29,9 @@ public class AccountService {
 		return em.find(Account.class, accountId);
 	}
 
-	public Account findByEmail(String email) throws Exception {
+	public Account findByUsername(String username) throws Exception {
 		try {
-			return em.createNamedQuery("Account.findByEmail", Account.class).setParameter("email", email).getSingleResult();
+			return em.createNamedQuery("Account.findByUsername", Account.class).setParameter("username", username).getSingleResult();
 		} catch (NoResultException ex) {
 			return null;
 		}
@@ -63,7 +63,7 @@ public class AccountService {
 			return false;
 		}
 
-		ModelUtils.copy(managed, account, "email", "password", "name", "roles");
+		ModelUtils.copy(managed, account, "name", "roles");
 		return true;
 	}
 

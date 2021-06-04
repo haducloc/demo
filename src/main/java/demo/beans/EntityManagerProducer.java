@@ -18,7 +18,7 @@ import javax.persistence.PersistenceContext;
 @DataSourceDefinition(
 		  name = "java:/jdbc/demo",
 		  className = "org.h2.jdbcx.JdbcDataSource",
-		  url = "jdbc:h2:./test",
+		  url = "jdbc:h2:./demo",
 		  isolationLevel = Connection.TRANSACTION_READ_COMMITTED, 
 		  properties = {}
 		)
