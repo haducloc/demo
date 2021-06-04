@@ -24,7 +24,7 @@ public class DelayContainerRequestFilter implements ContainerRequestFilter {
 	public void filter(ContainerRequestContext requestContext) throws IOException {
 
 		String __delayMs = requestContext.getUriInfo().getQueryParameters().getFirst("__delayMs");
-		int delayMs = ParseUtils.parseInt(__delayMs, 1500);
+		int delayMs = ParseUtils.parseInt(__delayMs, 0);
 
 		if (delayMs > 0) {
 			ThreadUtils.sleepInMs(delayMs, TimeUnit.MILLISECONDS);
