@@ -1,5 +1,6 @@
-package demo.controllers;
+package demo.jaxrs;
 
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -15,12 +16,12 @@ import demo.models.Result;
  *
  */
 @Provider
-public class DefaultExceptionMapper implements ExceptionMapper<Exception> {
+public class JaxRsExceptionMapper implements ExceptionMapper<WebApplicationException> {
 
 	@Override
-	public Response toResponse(Exception ex) {
+	public Response toResponse(WebApplicationException ex) {
 
-		return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(new Result().asError().message(ExceptionUtils.buildMessage(ex)))
+		return Response.status(ex.getResponse().getStatus()).entity(new Result().asError().message(ExceptionUtils.buildMessage(ex)))
 				.type(MediaType.APPLICATION_JSON).build();
 	}
 }

@@ -8,6 +8,12 @@ import javax.ws.rs.core.Application;
 
 import org.eclipse.microprofile.auth.LoginConfig;
 
+import demo.jaxrs.DefaultExceptionMapper;
+import demo.jaxrs.DelayContainerRequestFilter;
+import demo.jaxrs.JaxRsExceptionMapper;
+import demo.jaxrs.RestCorsProvider;
+import demo.jaxrs.ValidationExceptionMapper;
+
 /**
  *
  * @author <a href="mailto:haducloc13@gmail.com">Loc Ha</a>
@@ -25,8 +31,9 @@ public class RestActivator extends Application {
 		Set<Class<?>> resources = new HashSet<>();
 
 		// Activate ExceptionMappers
-		resources.add(DefaultExceptionMapper.class);
 		resources.add(ValidationExceptionMapper.class);
+		resources.add(JaxRsExceptionMapper.class);
+		resources.add(DefaultExceptionMapper.class);
 
 		// CORS
 		resources.add(RestCorsProvider.class);

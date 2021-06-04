@@ -1,4 +1,4 @@
-package demo.controllers;
+package demo.jaxrs;
 
 import java.util.concurrent.TimeUnit;
 

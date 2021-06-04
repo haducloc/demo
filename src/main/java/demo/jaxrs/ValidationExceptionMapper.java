@@ -1,4 +1,4 @@
-package demo.controllers;
+package demo.jaxrs;
 
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.core.MediaType;
