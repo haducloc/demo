@@ -30,7 +30,7 @@ public class RestCorsProvider implements Feature {
 
 		// SAFE: Accept, Accept-Language, Content-Language, Content-Type
 		corsFilter.setAllowedHeaders(
-				"Origin, Authorization, Upgrade-Insecure-Requests, Accept-Encoding, X-Requested-With, If-None-Match, If-Match, If-Modified-Since");
+				"Content-Type, Origin, Authorization, Upgrade-Insecure-Requests, Accept-Encoding, X-Requested-With, If-None-Match, If-Match, If-Modified-Since");
 
 		// SAFE: Cache-Control, Content-Language, Content-Length, Content-Type, Expires,
 		// Last-Modified, Pragma
